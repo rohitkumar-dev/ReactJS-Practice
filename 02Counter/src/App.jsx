@@ -12,16 +12,18 @@ function App() {
   function increment(){
     console.log("increment clicked")
     if(counter<20){
-      counter+=1
-      setCounter(counter)
+      //counter+=1
+      // setCounter(counter+1)
+      // setCounter(counter+1)
+      setCounter(counter+1)
     }
     console.log("now: ",counter)    
   }
   function decrement(){
     if(counter>0){
-      setCounter(counter-=1)
+      setCounter(counter-1)
     }
-    console.log("now: ",counter)    
+    console.log("now: ",counter) // Prints the old value
   }
 
   return (
