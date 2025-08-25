@@ -7,4 +7,8 @@ export default defineConfig({
   plugins: [react(),
     tailwindcss()
   ],
+  server: {
+    host: true,            // allow external connections (0.0.0.0)
+    allowedHosts: true     // ✅ allow all hosts (ngrok, localtunnel, etc.)
+  }
 })
