@@ -6,4 +6,5 @@ export default defineConfig({
   plugins: [react(),
     tailwindcss()
   ],
+  base: '/reactjs-practice/05passwordGenerator/'
 })
