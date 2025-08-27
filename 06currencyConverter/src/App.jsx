@@ -22,16 +22,17 @@ function App() {
   function convert(){
     setConvertedAmount(amount * currencyInfo[to])
   }
-  
+
+
   return (
-        <div
-            className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
+        <div 
+            className="w-full h-dvh flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
             style={{
                 backgroundImage: `url('https://images.pexels.com/photos/1235971/pexels-photo-1235971.jpeg')`,
             }}
         >
-            <div className="w-full">
-                <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30">
+            <div className="w-full p-5">
+                <div className="w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-orange-500/20">
                     <form
                         onSubmit={(e) => {
                             e.preventDefault();
@@ -51,10 +52,10 @@ function App() {
                         <div className="relative w-full h-0.5">
                             <button
                                 type="button"
-                                className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-md bg-blue-600 hover:bg-blue-500 active:bg-blue-600 text-white px-2 py-0.5"
+                                className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-md bg-orange-600 hover:bg-orange-500 active:bg-orange-600 text-white px-2 py-0.5"
                                 onClick={swap}
                             >
-                                swap
+                                Swap
                             </button>
                         </div>
                         <div className="w-full mt-1 mb-4">
@@ -64,10 +65,10 @@ function App() {
                                 currencyOption={options}
                                 onCurrencyChange={(currency)=>{return setTo(currency)}}
                                 selectCurrency={to}
-                                amountDisable
+                                amountDisable 
                             />
                         </div>
-                        <button type="submit" className="w-full bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-500 active:bg-blue-600">
+                        <button type="submit" className="w-full bg-orange-600 text-white px-4 py-3 rounded-lg hover:bg-orange-500 active:bg-orange-600">
                             Convert {from.toUpperCase()} to {to.toUpperCase()}
                         </button>
                     </form>
