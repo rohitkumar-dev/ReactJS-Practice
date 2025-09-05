@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import conf from "../conf/conf.js";
 
 import {Client, Account, ID} from 'appwrite'
+
 
 export class AuthService{
     client = new Client()
@@ -17,7 +19,7 @@ export class AuthService{
             const userAccount = await this.account.create(ID.unique(), email, password, name)
             if(userAccount){ 
                 //call another method
-                this.login({email, password})
+                return await this.login({email, password})
             } else{
                 return userAccount
             }
@@ -36,7 +38,7 @@ export class AuthService{
         try {
             return await this.account.get()
         } catch (err) {
-            throw err
+            return false
         }
         return null;
     }

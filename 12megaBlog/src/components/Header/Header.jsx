@@ -3,10 +3,10 @@ import { Container, Logo, LogoutBtn } from "../index";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import store from "../../store/store.js";
+
 
 export default function Header() {
-  const authStatus = useSelector((status) => store.auth.status);
+  const authStatus = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
 
   const navItems = [
@@ -44,6 +44,7 @@ export default function Header() {
                 <div className="mr-4">
                     <Link to='/'>
                         <Logo width="70px"/>
+                    </Link>
                         <ul className="flex ml-auto">
                             {navItems.map((item)=>(
                                 item.active ? (
@@ -60,7 +61,6 @@ export default function Header() {
                                 </li>
                             )}
                         </ul>
-                    </Link>
                 </div>
             </nav>
         </Container>

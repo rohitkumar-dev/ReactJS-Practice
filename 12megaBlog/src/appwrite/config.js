@@ -1,5 +1,5 @@
 import conf from "../conf/conf.js";
-import { Client, ID, Databases, Storage, Query } from "appwrite";
+import { Client, ID, Databases, Storage, Query, Permission, Role } from "appwrite";
 
 export class Service{
     client = new Client()
@@ -76,7 +76,7 @@ export class Service{
         }
     }
 
-    async getPosts(queries=[Query.equal("status", "active")], slug){
+    async getPosts(queries=[Query.equal("status", "active")]){
         try {
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
@@ -94,7 +94,8 @@ export class Service{
             return await this.storage.createFile(
                 conf.appwriteBucketId,
                 ID.unique(),
-                file
+                file,
+                [Permission.read(Role.any())]
             )
         } catch (err) {
             throw err
@@ -104,7 +105,7 @@ export class Service{
 
     async deleteFile(fileId){
         try {
-            return await this.storage.createFile(
+            return await this.storage.deleteFile(
                 conf.appwriteBucketId,
                 fileId
             )
@@ -114,9 +115,21 @@ export class Service{
         }
     }
 
-    async getFilePreview(fileId){
+    getFilePreview(fileId){
         try {
-            return await this.storage.getFilePreview(
+            return this.storage.getFilePreview(
+                conf.appwriteBucketId,
+                fileId
+            )
+        } catch (err) {
+            throw err
+            //return fasle
+        }
+    }
+
+    getFileView(fileId){
+        try {
+            return this.storage.getFileView(
                 conf.appwriteBucketId,
                 fileId
             )
