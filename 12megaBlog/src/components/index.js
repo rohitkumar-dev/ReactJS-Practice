@@ -16,8 +16,16 @@ import Post from './pages/Post'
 import AddPost from './pages/AddPost'
 import AllPosts from './pages/AllPosts'
 import EditPost from './pages/EditPost'
+import ThemeBtn from "./Header/themeBtn";
+import ImageSlider from "./ImageSlider";
+import StartBtnArea from "./StartBtnArea";
+import ImageGallery from "./ImageGallery";
+import ContactForm from "./ContactForm";
 
 export {
+    ContactForm,
+    ImageGallery,
+    StartBtnArea,
     Header,
     Footer,
     Logo,
@@ -35,5 +43,7 @@ export {
     Post,
     AddPost,
     AllPosts,
-    EditPost
+    EditPost,
+    ThemeBtn,
+    ImageSlider
 }
