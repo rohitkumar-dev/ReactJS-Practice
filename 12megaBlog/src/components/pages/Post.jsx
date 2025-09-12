@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import service from "../../appwrite/config";
-import { Button, Container } from "../index";
+import { Button, Container, SectionTag } from "../index";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 
@@ -32,39 +32,40 @@ export default function Post() {
     });
   };
 
-
-  console.log("POST:: ",post);
-    
-  
   return post ? (
-    <div className="py-8">
-      <Container>
-        <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
-          <img
-            src={service.getFileView(post.featuredImage)}
-            alt={post.title}
-            className="rounded-xl"
-            loading="lazy"
-          />
-
-          {isAuthor && (
-            <div className="absolute right-6 top-6">
-              <Link to={`/edit-post/${post.$id}`}>
-                <Button bgColor="bg-green-500" className="mr-3">
-                  Edit
+    <div className="">
+      <SectionTag tagname={"Read Post"} />
+      <div className="py-10 mx-2 sm:mx-24">
+        <Container>
+          <div className="w-full flex-row justify-center mb-6 rounded-xl ">
+            {isAuthor && (
+              <div className="w-full flex flex-row gap-5 pb-5">
+                <Link to={`/edit-post/${post.$id}`} className="w-1/2">
+                  <Button bgColor="bg-green-500 " className="w-full">
+                    Edit
+                  </Button>
+                </Link>
+                <Button bgColor="bg-red-500 w-1/2 " onClick={deletePost}>
+                  Delete
                 </Button>
-              </Link>
-              <Button bgColor="bg-red-500" onClick={deletePost}>
-                Delete
-              </Button>
-            </div>
-          )}
-        </div>
-        <div className="w-full mb-6">
-          <h1 className="text-2xl font-bold">{post.title}</h1>
-        </div>
-        <div className="browser-css">{parse(post.content)}</div>
-      </Container>
+              </div>
+            )}
+            <img
+              src={service.getFileView(post.featuredImage)}
+              alt={post.title}
+              className="w-full h-60 sm:h-120 rounded-lg object-cover"
+              loading="lazy"
+            />
+          </div>
+
+          <div className="w-full bg-gray-500 rounded-lg p-5 ">
+            <h1 className="text-2xl font-bold pb-5 text-center">
+              {post.title}
+            </h1>
+            <div className="browser-css">{parse(post.content)}</div>
+          </div>
+        </Container>
+      </div>
     </div>
   ) : null;
 }

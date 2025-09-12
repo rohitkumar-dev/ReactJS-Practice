@@ -1,64 +1,3 @@
-// import React, { useState } from "react";
-// import { useForm } from "react-hook-form";
-// import Input from "./Input";
-// import Button from "./Button";
-
-// function ContactForm() {
-//   const { handleSubmit, register, reset, formState: { errors, isSubmitSuccessful } } = useForm();
-
-//   const contact = async (data)=>{
-//     setError("")
-//     console.log(data);
-//     reset()
-//   }
-//   return (
-//     <div className="text-white">
-//       <div>
-//         <p>Contact us</p>
-//       </div>
-//       <div>
-//         <form onSubmit={handleSubmit(contact)}>
-//           <Input
-//             label="Full Name: "
-//             placeholder="Enter your full name"
-//             {...register("name", {
-//               required: true,
-//             })}
-//           />
-//           <Input
-//             label="Email: "
-//             placeholder="Enter your email"
-//             {...register("email", {
-//               required: true,
-//               validate: {
-//                 matchPatern: (value) =>
-//                   /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-//                   "Email address must be a valid address",
-//               },
-//             })}
-//           />
-//           <Input
-//             label="Query: "
-//             placeholder="Enter your query"
-//             {...register("query", {
-//               required: true,
-//             })}
-//           />
-//           {errors.name && <p className="text-red-400">{errors.name.message}</p>}
-//           <Button type="submit" className="w-full">
-//             Submit query
-//           </Button>
-//           {isSubmitSuccessful && <p>Submitted</p>}
-//         </form>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default ContactForm;
-
-
-
 import React from "react";
 import { useForm } from "react-hook-form";
 import Input from "./Input";
@@ -75,21 +14,17 @@ function ContactForm() {
   const contact = async (data) => {
     console.log(data);
 
-    // simulate API call
     await new Promise((res) => setTimeout(res, 500));
 
-    reset(); // clears fields & errors
+    reset(); // clears field & error
   };
 
   return (
-    <div className="text-white">
-      <div>
-        <p>Contact us</p>
-      </div>
-      <div>
-        <form onSubmit={handleSubmit(contact)}>
-          {/* Full Name */}
-          <Input
+    <div className="mt-12 mb-12 px-7 mx-auto w-full ">
+      <div className=" sm:flex sm:justify-between  text-white  sm:mx-18">
+        <img src="https://images.pexels.com/photos/263564/pexels-photo-263564.jpeg" alt="" className="sm:w-2/5 sm:mt-4 rounded-lg object-cover"/>
+        <form onSubmit={handleSubmit(contact)} className="w-full sm:w-2/5 ">
+          <Input className=""
             label="Full Name: "
             placeholder="Enter your full name"
             {...register("name", {
@@ -97,11 +32,10 @@ function ContactForm() {
             })}
           />
           {errors.name && (
-            <p className="text-red-400">{errors.name.message}</p>
+            <p className="text-red-400 text-xs pl-1 pt-1">{errors.name.message}</p>
           )}
-
-          {/* Email */}
           <Input
+          className=""
             label="Email: "
             placeholder="Enter your email"
             {...register("email", {
@@ -114,11 +48,9 @@ function ContactForm() {
             })}
           />
           {errors.email && (
-            <p className="text-red-400">{errors.email.message}</p>
+            <p className="text-red-400 text-xs pl-1 pt-1">{errors.email.message}</p>
           )}
-
-          {/* Query */}
-          <Input
+          <Input className=""
             label="Query: "
             placeholder="Enter your query"
             {...register("query", {
@@ -126,17 +58,15 @@ function ContactForm() {
             })}
           />
           {errors.query && (
-            <p className="text-red-400">{errors.query.message}</p>
+            <p className="text-red-400 text-xs pl-1 pt-1">{errors.query.message}</p>
           )}
 
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full mt-8">
             Submit query
           </Button>
-
-          {/* Success Message */}
           {isSubmitSuccessful && (
-            <p className="mt-3 text-green-400">
-              ✅ Your query was submitted successfully!
+            <p className="my-3 text-green-400 text-center">
+              Your query was submitted successfully!
             </p>
           )}
         </form>

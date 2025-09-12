@@ -1,13 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import { Controller } from "react-hook-form";
-import conf from '../conf/conf.js'
+import conf from "../conf/conf.js";
 
 export default function RTE({ name, control, label, defaultValue = "" }) {
-  return (
-    <div className="w-full">
-      {label && <label className="inline-block mb-1 pl-1">{label}</label>}
+  const [Loading, setLoading] = useState(true);
 
+  return (
+    <div className="w-full mt-4 ">
+      {label && (
+        <label className=" inline-block mb-1 pl-1 text-sm text-white">
+          {label}
+        </label>
+      )}
+
+      {/* {Loading && (
+        <div className=" h-[400px] bg-gray-600 rounded-lg overflow-hidden flex flex-col justify-evenly animate-pulse">
+          <div className="h-[50px] mx-5 rounded-lg bg-gray-500"></div>
+          <div className="h-[280px] mx-5 rounded-lg bg-gray-500"></div>
+        </div>
+      )} */}
+
+      
+      <div className="h-[400px] relative">
+        {Loading && (
+        <div className="absolute inset-0 h-[400px] bg-gray-600 rounded-lg overflow-hidden flex flex-col justify-evenly animate-pulse">
+          <div className="h-[50px] mx-5 rounded-lg bg-gray-500"></div>
+          <div className="h-[280px] mx-5 rounded-lg bg-gray-500"></div>
+        </div>
+      )}
       <Controller
         name={name || "content"}
         control={control}
@@ -17,41 +38,21 @@ export default function RTE({ name, control, label, defaultValue = "" }) {
             initialValue={defaultValue}
             init={{
               initialValue: defaultValue,
-              height: 500,
-              menubar: true,
+              menubar: false,
               promotion: false,
-              
-              plugins: [
-             
-                "advlist",
-                "autolink",
-                "lists",
-                "link",
-                // "image",
-                // "charmap",
-                // "preview",
-                "anchor",
-                // "searchreplace",
-                // "visualblocks",
-                "code",
-                // "fullscreen",
-                // "insertdatetime",
-                // "media",
-                "table",
-                // "code",
-                "help",
-                // "wordcount",
-                // "anchor",
-              ],
+              branding: false,
+              plugins: ["autolink", "link", "anchor"],
               toolbar:
                 "undo redo | blocks | bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat",
               content_style:
-                "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+                "body { font-family:Helvetica,Arial,sans-serif; font-size:14px display:flex}",
             }}
             onEditorChange={onChange}
+            onInit={() => setLoading(false)}
           />
         )}
       />
+      </div>
     </div>
   );
 }

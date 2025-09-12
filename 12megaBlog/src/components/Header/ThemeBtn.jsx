@@ -6,7 +6,7 @@ function ThemeBtn() {
 
   return (
     <button onClick={()=>(setTheme(theme==="dark"? "light" : "dark"))} className="h-full px-3  bg-amber-800 rounded-3xl">
-        THEME
+        THE
     </button>
   )
 }

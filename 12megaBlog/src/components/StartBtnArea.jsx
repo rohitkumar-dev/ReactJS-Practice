@@ -6,7 +6,7 @@ function StartBtnArea() {
   const authStatus = useSelector((state) => state.auth.status);
 
   return (
-    <div className="p-3 mt-5 mb-5 flex flex-col sm:flex-row content-center justify-around ">
+    <div className="p-3 mt-5 mb-8 flex flex-col sm:flex-row content-center justify-around ">
       <p className="text-white text-center px-3 py-5 my-auto sm:w-2/3 ">
         Inspire others by sharing your realistic experience
       </p>

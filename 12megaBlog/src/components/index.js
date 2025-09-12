@@ -21,8 +21,20 @@ import ImageSlider from "./ImageSlider";
 import StartBtnArea from "./StartBtnArea";
 import ImageGallery from "./ImageGallery";
 import ContactForm from "./ContactForm";
+import AuthorCard from "./AuthorCard";
+import SectionTag from "./SectionTag";
+import AboutArea from "./AboutArea";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Company from "./pages/Company";
+import TermsNCondition from "./pages/TermsNCondition";
 
 export {
+    Company,
+    PrivacyPolicy,
+    TermsNCondition,
+    AboutArea,
+    SectionTag,
+    AuthorCard,
     ContactForm,
     ImageGallery,
     StartBtnArea,

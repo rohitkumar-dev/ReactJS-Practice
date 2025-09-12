@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import service from "../../appwrite/config";
-import { Container, PostCard, ImageSlider, StartBtnArea, ImageGallery, ContactForm } from "../index";
+import { Container, PostCard, ImageSlider, StartBtnArea, ImageGallery, ContactForm, AuthorCard, SectionTag, AboutArea } from "../index";
 
 
 function Home() {
@@ -36,23 +36,33 @@ function Home() {
       <ImageSlider/>
       <StartBtnArea/>
 
-      <div className="my-10 ">
-        <p className="px-6 py-5 sm:px-30 bg-amber-500 text-white font-medium text-2xl">Featured Blogs</p>
-      </div>
+      <SectionTag tagname = {"Featured Blogs"}/>
       
       <Container>
-        <div className=" ">
-          {posts.map((post) => (
-            <div key={post.$id} className="mx-3 my-6 sm">
-              <PostCard {...post} />
-            </div>
-          ))}
+        <div className="sm:grid sm:grid-cols-2 sm:gap-8 mx-2 sm:mx-20 my-12 sm:my-10">
+          {posts.map((post, i) =>
+            i <= 5 ? (
+              <div key={post.$id} className={`${i>=4? "hidden sm:inline-block" : null} my-10 sm:my-5`}>
+                <PostCard {...post} />
+              </div>
+            ) : null
+          )}
         </div>
       </Container>
 
+      <SectionTag tagname = {"Featured Authors"}/>
+      <AuthorCard/>
+
+      <SectionTag tagname = {"Blog Visuals"}/>
       <ImageGallery/>
 
+      <SectionTag tagname = {"Contact Us"} />
       <ContactForm/>
+
+      <SectionTag tagname = {"About Us"}/>
+      <AboutArea/>
+      <AboutArea/>
+      
     </div>
   );
 }

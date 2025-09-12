@@ -13,7 +13,12 @@ import Signup from "./components/pages/Signup.jsx";
 import EditPost from "./components/pages/EditPost.jsx";
 import Post from "./components/pages/Post.jsx";
 import AllPosts from "./components/pages/AllPosts.jsx";
-
+import ContactUs from "./components/pages/ContactUs.jsx";
+import AboutUs from "./components/pages/AboutUs.jsx";
+import Company from "./components/pages/Company.jsx";
+import PrivacyPolicy from "./components/pages/PrivacyPolicy.jsx";
+import TermsNCondition from "./components/pages/TermsNCondition.jsx";
+import AuthCallback from "./components/oAuth/AuthCallback.jsx";
 
 const router = createBrowserRouter([
   {
@@ -43,14 +48,15 @@ const router = createBrowserRouter([
       {
         path: "/all-posts",
         element: (
-            <AllPosts />       
+          <AuthLayout authentication>
+            <AllPosts />
+          </AuthLayout>
         ),
       },
       {
         path: "/add-post",
         element: (
           <AuthLayout authentication>
-            {" "}
             <AddPost />
           </AuthLayout>
         ),
@@ -59,14 +65,41 @@ const router = createBrowserRouter([
         path: "/edit-post/:slug",
         element: (
           <AuthLayout authentication>
-            {" "}
             <EditPost />
           </AuthLayout>
         ),
       },
       {
         path: "/post/:slug",
-        element: <Post />,
+        element: (
+          <AuthLayout authentication>
+            <Post />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/contact",
+        element: <ContactUs />,
+      },
+      {
+        path: "/about",
+        element: <AboutUs />,
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: "/company",
+        element: <Company />,
+      },
+      {
+        path: "/terms-conditions",
+        element: <TermsNCondition />,
+      },
+      {
+        path: "/auth/callback",
+        element: <AuthCallback />,
       },
     ],
   },
@@ -75,8 +108,7 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </Provider>
   </StrictMode>
-)
-
+);

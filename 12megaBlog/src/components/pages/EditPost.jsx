@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Container, PostForm} from '../index'
+import {Container, PostForm, SectionTag} from '../index'
 import service from '../../appwrite/config'
 import { useNavigate, useParams } from 'react-router-dom'
 
@@ -21,10 +21,18 @@ function EditPost() {
     },[slug,navigate])
 
   return post ? (
-    <div>EditPost
+    // <div>
+    //     <PostForm post={post}/>
+    // </div>
+
+    <div className="relative">
+      <SectionTag tagname={"Edit Post"} className="z-10"/>
+      <div className="px-4 pt-5 pb-8 mb-5">
         <PostForm post={post}/>
+      </div>
     </div>
   ) : null
 }
 
 export default EditPost
+

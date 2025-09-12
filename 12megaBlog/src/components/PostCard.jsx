@@ -1,28 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import service from "../appwrite/config.js";
+import parse from "html-react-parser/lib/index";
 
-export default function PostCard({ $id, title, featuredImage }) {
+export default function PostCard({ $id, title, featuredImage, content }) {
   return (
-    <div className="sm:flex w-full bg-gray-100 rounded-xl px-3 py-5">
+    <div className=" w-full bg-gray-300 rounded-lg overflow-hidden  ">
       <div
-        className="w-full h-45 justify-center sm:w-2/3 "
-        //       style={{
-        //   backgroundImage: `url("https://images.pexels.com/photos/5068301/pexels-photo-5068301.jpeg")`,
-        //   backgroundSize: "cover",
-        //   backgroundPosition: "center",
-        // }}
+        className="w-full h-50 sm:h-60 justify-center  "
       >
         <img
           src={service.getFileView(featuredImage)}
           alt={title}
-          className="rounded-xl w-full h-full object-cover"
+          className=" w-full h-full object-cover bg-no-repeat bg-center"
         />
       </div>
-      <div className="sm:w-1/3 sm:flex sm:flex-col sm:justify-between">
-        <h2 className="text-2xl font-medium py-5 my-auto">{title}</h2>
-        <div className="flex justify-end  bg-amber-800">
-          <Link to={`/post/${$id}`} className="p-1 bg-amber-600">
+
+      <div className="h-30 p-3 flex flex-col justify-between ">
+        <h2 className="text-lg font-medium  overflow-hidden">{title.substring(0,60)+"..."}</h2>
+        {/* <p className="overflow-hidden">{parse(content)}</p> */}
+        <div className="flex justify-end ">
+          <Link to={`/post/${$id}`} className="p- text-gray-700">
             Read more...
           </Link>
         </div>
