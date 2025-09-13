@@ -24,9 +24,9 @@ export default function RTE({ name, control, label, defaultValue = "" }) {
       
       <div className="h-[400px] relative">
         {Loading && (
-        <div className="absolute inset-0 h-[400px] bg-red-600 rounded-lg overflow-hidden flex flex-col justify-evenly animate-pulse">
-          <div className="h-[50px] mx-5 rounded-lg bg-red-300"></div>
-          <div className="h-[280px] mx-5 rounded-lg bg-red-300"></div>
+        <div className="absolute inset-0 h-[400px] bg-red-300 dark:bg-red-700 rounded-lg overflow-hidden flex flex-col justify-evenly animate-pulse">
+          <div className="h-[50px] mx-5 rounded-lg bg-red-100 dark:bg-red-600"></div>
+          <div className="h-[280px] mx-5 rounded-lg bg-red-100 dark:bg-red-600"></div>
         </div>
       )}
       <Controller

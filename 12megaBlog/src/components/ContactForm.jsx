@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Input from "./Input";
 import Button from "./Button";
 
 function ContactForm() {
+    const [processing, setProcessing] = useState(false)
   const {
     handleSubmit,
     register,
@@ -12,17 +13,17 @@ function ContactForm() {
   } = useForm();
 
   const contact = async (data) => {
-    console.log(data);
-
+    setProcessing(true)
+    //console.log(data);
     await new Promise((res) => setTimeout(res, 500));
-
+    setProcessing(false)
     reset(); // clears field & error
   };
 
   return (
     <div className="mt-12 mb-12 px-7 mx-auto w-full ">
       <div className=" sm:flex sm:justify-between  text-white  sm:mx-18">
-        <img src="https://images.pexels.com/photos/263564/pexels-photo-263564.jpeg" alt="" className="sm:w-2/5 sm:mt-4 rounded-lg object-cover"/>
+        <img src="https://images.pexels.com/photos/208745/pexels-photo-208745.jpeg" alt="" className="sm:w-2/5 sm:mt-4 rounded-lg object-cover"/>
         <form onSubmit={handleSubmit(contact)} className="w-full sm:w-2/5 ">
           <Input className=""
             label="Full Name: "
@@ -62,7 +63,7 @@ function ContactForm() {
           )}
 
           <Button type="submit" className="w-full mt-8">
-            Submit query
+            {processing? "Submitting...": "Submit Query"}
           </Button>
           {isSubmitSuccessful && (
             <p className="my-3 text-green-400 text-center">

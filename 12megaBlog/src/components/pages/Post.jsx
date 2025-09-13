@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 
 export default function Post() {
   const [post, setPost] = useState(null);
+  const [processing, setProcessing] = useState(false)
   const { slug } = useParams();
   const navigate = useNavigate();
 
@@ -24,12 +25,19 @@ export default function Post() {
   }, [slug, navigate]);
 
   const deletePost = () => {
-    service.deletePost(post.$id).then((status) => {
+    try {
+      setProcessing(true)
+      service.deletePost(post.$id).then((status) => {
       if (status) {
         service.deleteFile(post.featuredImage);
         navigate("/");
       }
     });
+    } catch (error) {
+      setProcessing(false)
+      throw(error)
+    }
+    
   };
 
   return post ? (
@@ -46,7 +54,7 @@ export default function Post() {
                   </Button>
                 </Link>
                 <Button bgColor="bg-red-600 w-1/2 " onClick={deletePost}>
-                  Delete
+                  {processing? "Processing...": "Delete"}
                 </Button>
               </div>
             )}

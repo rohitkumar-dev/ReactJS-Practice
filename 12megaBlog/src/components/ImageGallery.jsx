@@ -2,9 +2,9 @@ import React from "react";
 
 function ImageGallery() {
   const images = [
-    "https://images.pexels.com/photos/5068301/pexels-photo-5068301.jpeg",
-    "https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg",
-    "https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg",
+    "https://images.pexels.com/photos/1140867/pexels-photo-1140867.jpeg",
+    "https://images.pexels.com/photos/1140854/pexels-photo-1140854.jpeg",
+    "https://images.pexels.com/photos/1141436/pexels-photo-1141436.jpeg",
   ];
 
   return (

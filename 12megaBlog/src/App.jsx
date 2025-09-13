@@ -25,7 +25,7 @@ function App() {
   }, []);
 
   return !loading ? (
-    <div className="min-h-dvh w-full flex flex-col bg-red-100 dark:bg-red-900">
+    <div className="min-h-dvh w-full flex flex-col bg-red-100 dark:bg-red-900 transition-all duration-500 font-sans">
       <Header />
       <main className="flex-grow">
         <Outlet />
@@ -33,7 +33,12 @@ function App() {
       <Footer />
     </div>
   ) : (
-    <h1>Loading.............</h1>
+    <div className="w-full h-dvh flex justify-center items-center bg-red-100 ">
+      <span className="relative flex size-16 ">
+        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-300 opacity-75"></span>
+        <span className="relative inline-flex size-16 rounded-full bg-red-400"></span>
+      </span>
+    </div>
   );
 }
 

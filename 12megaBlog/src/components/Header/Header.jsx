@@ -88,7 +88,7 @@ export default function Header() {
                 //ref={menuRef}
                 className={` ${
                   menu ? "inline-block" : "hidden"
-                }  sm:inline-block flex-grow text-sm md:text-base rounded-md mt-3 sm:mt-0 sm:flex-grow-0 bg-red-300 sm:bg-red-100 dark:bg-red-900`}
+                }  sm:inline-block flex-grow text-sm md:text-base rounded-lg mt-3 sm:mt-0 sm:flex-grow-0 bg-red-300 sm:bg-red-100 sm:dark:bg-red-900`}
               >
                 <ul className="sm:flex sm:flex-row sm:justify-between ">
                   {navItems.map((item) =>

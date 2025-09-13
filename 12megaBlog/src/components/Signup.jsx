@@ -19,8 +19,10 @@ function Signup() {
     formState: { errors, isSubmitSuccessful },
   } = useForm();
   const [success, setSuccess] = useState(false);
+    const [processing, setProcessing] = useState(false)
 
   const create = async (data) => {
+    setProcessing(true)
     setError("");
     setSuccess(false);
     try {
@@ -33,6 +35,7 @@ function Signup() {
       }
     } catch (error) {
       //setError(error.message)
+      setProcessing(false)
       setError("Invalid input details");
     }
   };
@@ -67,6 +70,7 @@ function Signup() {
           <form onSubmit={handleSubmit(create)}>
             <div className="">
               <Input
+              labelClassName="dark:text-red-900"
                 label="Full Name: "
                 placeholder="Enter your full name"
                 {...register("name", {
@@ -79,6 +83,7 @@ function Signup() {
                 </p>
               )}
               <Input
+              labelClassName="dark:text-red-900"
                 label="Email: "
                 placeholder="Enter your email"
                 {...register("email", {
@@ -96,6 +101,7 @@ function Signup() {
               )}
 
               <Input
+              labelClassName="dark:text-red-900"
                 label="Password: "
                 type="password"
                 placeholder="Enter your password"
@@ -113,7 +119,7 @@ function Signup() {
                 </p>
               )}
               <Button type="submit" className="w-full my-5">
-                Create Account
+                {processing? "Processing...": "Create Account"}
               </Button>
               {success && (
                 <p className="my-3  text-center">

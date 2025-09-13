@@ -9,7 +9,8 @@ import { useParams } from "react-router-dom";
 function PostForm({ post }) {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
-  console.log("POST: ", post);
+  const [processing, setProcessing] = useState(false)
+  //console.log("POST: ", post);
   const { slug } = useParams();
 
   const {
@@ -34,6 +35,7 @@ function PostForm({ post }) {
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
   const submit = async (data) => {
+    setProcessing(true)
     setError("");
     setSuccess(false);
     try {
@@ -44,7 +46,6 @@ function PostForm({ post }) {
         if (file) {
           service.deleteFile(post.featuredImage);
         }
-        console.log("File:: ", file);
 
         const dbPost = await service.updatePost(post.$id, {
           title: data.title,
@@ -78,6 +79,7 @@ function PostForm({ post }) {
       }
     } catch (error) {
       setError("Some went wrong, check your input or again!");
+      setProcessing(false)
       throw(error)
     }
   };
@@ -213,7 +215,9 @@ function PostForm({ post }) {
             bgColor={post ? "bg-red-600" : undefined}
             className="w-full sm:my-auto"
           >
-            {post ? "Update" : "Submit"}
+
+            {processing? ("Processing..."): (post ? "Update" : "Submit")}
+
           </Button>
           </div>
           
@@ -227,6 +231,11 @@ function PostForm({ post }) {
       
 
       </form>
+
+
+
+
+
     </div>
   );
 }

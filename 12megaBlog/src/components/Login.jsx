@@ -17,8 +17,10 @@ function Login() {
   } = useForm();
   const [err, setErr] = useState("");
   const [success, setSuccess] = useState(false);
+    const [processing, setProcessing] = useState(false)
 
   const login = async (data) => {
+    setProcessing(true)
     setErr("");
     setSuccess(false);
     try {
@@ -32,6 +34,7 @@ function Login() {
     } catch (err) {
       //setErr(err.message);
       setErr("Invalid email or password");
+      setProcessing(false)
       console.log(err);
     }
   };
@@ -64,9 +67,10 @@ function Login() {
           >
           </GoogleBtn>
 
-        <form onSubmit={handleSubmit(login)} className="mt-8.. mt-6  ">
-          <div className="">
-            <Input
+        <form onSubmit={handleSubmit(login)} className="mt-8.. mt-6 ">
+          <div className="dark:text-red-900">
+            <Input 
+            labelClassName="dark:text-red-900"
               label="Email: "
               placeholder="Enter your email"
               {...register("email", {
@@ -83,6 +87,7 @@ function Login() {
               </p>
             )}
             <Input
+            labelClassName="dark:text-red-900"
               label="Password: "
               type="password"
               placeholder="Enter your password"
@@ -101,7 +106,7 @@ function Login() {
             )}
 
             <Button type="submit" className="w-full my-5">
-              Sign in
+              {processing? "Processing...": "Sign in"}
             </Button>
             {err && <p className="my-3 text-red-600 text-center">{err}</p>}
 
