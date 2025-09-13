@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login as authLogin } from "../store/authSlice";
-import { Button, Input, Logo } from "./index";
+import { Button, Input, Logo, SectionTag } from "./index";
 import { useDispatch } from "react-redux";
 import authService from "../appwrite/auth";
 import { useForm } from "react-hook-form";
+import GoogleBtn from "./GoogleBtn";
 
 function Login() {
   const navigate = useNavigate();
@@ -37,14 +38,16 @@ function Login() {
 
 
   return (
-    <div className="flex justify-center w-full my-10 px-5 ">
+    <>
+    <SectionTag tagname={"Sign in to your account"}/>
+    <div className="flex justify-center w-full my-5 px-5 ">
       <div
-        className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}
+        className={`mx-auto w-full max-w-lg bg-red-300 rounded-xl px-5 sm:px-10 py-5 border border-black/10`}
       >
-        <h2 className="text-center text-2xl font-bold leading-tight">
+        <h2 className="hidden text-center text-2xl font-bold leading-tight">
           Sign in to your account
         </h2>
-        <p className="mt-2 text-center text-base text-black/60">
+        <p className="mt-2 text-center text-base text-red-900">
           Don&apos;t have any account?&nbsp;
           <Link
             to="/signup"
@@ -55,9 +58,11 @@ function Login() {
         </p>
 
         {/* //google login button */}
-        <Button onClick={()=> authService.loginWithGoogle()} className="mt-6 w-full">
-          Login with Google
-        </Button>
+        <GoogleBtn
+            onClick={() => authService.loginWithGoogle()}
+            className="mt-6 "
+          >
+          </GoogleBtn>
 
         <form onSubmit={handleSubmit(login)} className="mt-8.. mt-6  ">
           <div className="">
@@ -73,7 +78,7 @@ function Login() {
               })}
             />
             {errors.email && (
-              <p className="text-red-400 text-xs pl-1">
+              <p className="text-red-600 text-xs pl-1">
                 {errors.email.message}
               </p>
             )}
@@ -90,7 +95,7 @@ function Login() {
               })}
             />
             {errors.password && (
-              <p className="text-red-400 text-xs pl-1">
+              <p className="text-red-600 text-xs pl-1">
                 {errors.password.message}
               </p>
             )}
@@ -98,17 +103,18 @@ function Login() {
             <Button type="submit" className="w-full my-5">
               Sign in
             </Button>
-            {err && <p className="my-3 text-red-400 text-center">{err}</p>}
+            {err && <p className="my-3 text-red-600 text-center">{err}</p>}
 
             {success && (
-              <p className="my-3 text-green-400 text-center">
-                Login successful, redirecting...!
+              <p className="my-3 text- text-center">
+                Login successful, redirecting...
               </p>
             )}
           </div>
         </form>
       </div>
     </div>
+    </>
   );
 }
 

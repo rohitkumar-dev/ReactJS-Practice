@@ -9,7 +9,7 @@ export default function RTE({ name, control, label, defaultValue = "" }) {
   return (
     <div className="w-full mt-4 ">
       {label && (
-        <label className=" inline-block mb-1 pl-1 text-sm text-white">
+        <label className=" inline-block mb-1 pl-1 text-sm text-red-900 dark:text-white">
           {label}
         </label>
       )}
@@ -24,9 +24,9 @@ export default function RTE({ name, control, label, defaultValue = "" }) {
       
       <div className="h-[400px] relative">
         {Loading && (
-        <div className="absolute inset-0 h-[400px] bg-gray-600 rounded-lg overflow-hidden flex flex-col justify-evenly animate-pulse">
-          <div className="h-[50px] mx-5 rounded-lg bg-gray-500"></div>
-          <div className="h-[280px] mx-5 rounded-lg bg-gray-500"></div>
+        <div className="absolute inset-0 h-[400px] bg-red-600 rounded-lg overflow-hidden flex flex-col justify-evenly animate-pulse">
+          <div className="h-[50px] mx-5 rounded-lg bg-red-300"></div>
+          <div className="h-[280px] mx-5 rounded-lg bg-red-300"></div>
         </div>
       )}
       <Controller

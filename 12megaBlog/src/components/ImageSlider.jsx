@@ -21,10 +21,10 @@ const ImageSlider = () => {
   const currentImageUrl = images[imgIndex] || "";
 
   return (
-    <div className="relative h-85 sm:h-120 w-full overflow-hidden flex items-center justify-center">
+    <div className="relative h-85 sm:h-120 w-full overflow-hidden flex items-center justify-center ">
       <div
         style={{ backgroundImage: `url(${currentImageUrl})` }}
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-70 transition-all duration-1000 ease-in-out"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-90 transition-all duration-1000 ease-in-out"
       ></div>
       <div className="relative z-10 p-6 text-white text-center">
         <h1 className="font-bold text-xl sm:text-4xl">

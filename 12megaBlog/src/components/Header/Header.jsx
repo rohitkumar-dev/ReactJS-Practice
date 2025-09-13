@@ -49,21 +49,24 @@ export default function Header() {
   // }, [menu]);
 
   return (
-    <>
-      <header className="mx-2 sm:mx-10 py-4 bg-[rgba(24, 24, 24, 0.8)] z-40 ">
+    <header className="bg-red-100 dark:bg-red-900 border border-b-red-300">
+      <div className="mx-2 sm:mx-10 py-4 bg-[rgba(24, 24, 24, 0.8)] z-40 ">
         <Container>
           <nav className=" ">
             <div className="flex flex-row flex-wrap items-center justify-between">
-              <div className="w-1/2 sm:max-w-1/10 ">
-                <Link to="/" className="no-underline outline-none border-none focus:outline-none active:outline-none hover:no-underline">
-                  <Logo width="100px" height=""/>
+              <div className="w-1/2 sm:max-w-1/10 overflow-hidden">
+                <Link
+                  to="/"
+                  className="no-underline outline-none border-none focus:outline-none active:outline-none hover:no-underline"
+                >
+                  <Logo width="100px" height="" className="max-h-8" />
                 </Link>
               </div>
 
               <div className="w-1/2 flex justify-end sm:hidden ">
                 <button className="" onClick={() => setMenu(!menu)}>
                   <svg
-                    className={` h-8 w-8 p-1 bg-gray-400 border border-amber-600 rounded-sm `}
+                    className={` h-8 w-8 p-1 bg-red-600 text-white border border-red-600 rounded-sm `}
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -76,7 +79,7 @@ export default function Header() {
                     />
                   </svg>
                 </button>
-                <div>
+                <div className="ml-3">
                   <ThemeBtn />
                 </div>
               </div>
@@ -85,7 +88,7 @@ export default function Header() {
                 //ref={menuRef}
                 className={` ${
                   menu ? "inline-block" : "hidden"
-                }  sm:inline-block  bg-orange-100 flex-grow text-sm md:text-base border border-amber-700 rounded-md mt-3 sm:mt-0 sm:flex-grow-0  dark:bg-blue-800`}
+                }  sm:inline-block flex-grow text-sm md:text-base rounded-md mt-3 sm:mt-0 sm:flex-grow-0 bg-red-300 sm:bg-red-100 dark:bg-red-900`}
               >
                 <ul className="sm:flex sm:flex-row sm:justify-between ">
                   {navItems.map((item) =>
@@ -96,10 +99,8 @@ export default function Header() {
                           onClick={() => setMenu(false)}
                           className={({ isActive }) =>
                             `${
-                              isActive
-                                ? "text-orange-700 bg-orange-200"
-                                : "text-black"
-                            } inline-block w-full px-4 py-2 font-medium  bg-amber-100 rounded-md `
+                              isActive ? "text-white bg-red-600" : ""
+                            } inline-block w-full px-4 py-2 font-medium text-red-900 bg-red-300 rounded-md `
                           }
                         >
                           {item.name}
@@ -108,7 +109,7 @@ export default function Header() {
                     ) : null
                   )}
                   {authStatus && (
-                    <li onClick={() => setMenu(false)}>
+                    <li onClick={() => setMenu(false)} className="sm:ml-3">
                       <LogoutBtn />
                     </li>
                   )}
@@ -121,7 +122,7 @@ export default function Header() {
             </div>
           </nav>
         </Container>
-      </header>
-    </>
+      </div>
+    </header>
   );
 }

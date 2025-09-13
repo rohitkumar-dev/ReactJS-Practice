@@ -6,7 +6,7 @@ function Company() {
     <div >
           <SectionTag tagname={"Company"} />
           <div className="my-12 mx-6 sm:mx-24">
-            <div className=" bg-gray-600  rounded-lg  p-3">
+            <div className=" bg-red-300  rounded-lg text-red-900 p-3">
               <p className="overflow-hidden">
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos
                 necessitatibus neque vitae labore at consequatur molestiae laborum

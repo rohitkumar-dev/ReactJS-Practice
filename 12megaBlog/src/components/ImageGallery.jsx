@@ -16,7 +16,7 @@ function ImageGallery() {
               alt="gallery image"
               className="w-full h-full object-cover mt-10 rounded-xl "
             />
-            ;
+            
           </div>
         ))}
       </div>

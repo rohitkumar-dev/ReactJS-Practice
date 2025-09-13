@@ -62,8 +62,6 @@ function PostForm({ post }) {
           : null;
         if (file) {
           data.featuredImage = file.$id;
-          console.log("Data:: ", data);
-          console.log("File:: ", file);
           const dbPost = await service.createPost({
             title: data.title,
             slug: data.slug,
@@ -161,7 +159,7 @@ function PostForm({ post }) {
         /> 
   
         {errors.content && (
-          <p className="text-red-400 text-xs pl-1 pt-1">
+          <p className="text-red-600 text-xs pl-1 pt-1">
             {errors.content.message}
           </p>
         )}
@@ -209,10 +207,10 @@ function PostForm({ post }) {
             </p>
           )} */}
           <div className="mt-4 w-full">
-          <p className='inline-block mb-1 pl-1 text-sm text-white'><i>Check before submitting</i></p>
+          <p className='inline-block mb-1 pl-1 text-sm text-red-900 dark:text-white'><i>Check before submitting</i></p>
           <Button
             type="submit"
-            bgColor={post ? "bg-green-500" : undefined}
+            bgColor={post ? "bg-red-600" : undefined}
             className="w-full sm:my-auto"
           >
             {post ? "Update" : "Submit"}

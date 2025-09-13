@@ -55,49 +55,46 @@ export class AuthService {
   }
 
   //google auth
-//   async loginWithGoogle() {
-//     try {
-//         this.account.createOAuth2Session({
-//         provider: OAuthProvider.Google,
-//         success: "http://localhost:5173/auth/callback",
-//         failure: "http://localhost:5173/login"
-//       });
-//     } catch (err) {
-//       throw err;
-//     }
-//   }
+  //   async loginWithGoogle() {
+  //     try {
+  //         this.account.createOAuth2Session({
+  //         provider: OAuthProvider.Google,
+  //         success: "http://localhost:5173/auth/callback",
+  //         failure: "http://localhost:5173/login"
+  //       });
+  //     } catch (err) {
+  //       throw err;
+  //     }
+  //   }
   async loginWithGoogle() {
     try {
-        return this.account.createOAuth2Token({
+      return this.account.createOAuth2Token({
         provider: OAuthProvider.Google,
         success: "http://localhost:5173/auth/callback",
-        failure: "http://localhost:5173/login"
+        failure: "http://localhost:5173/login",
       });
     } catch (err) {
       throw err;
     }
   }
-  async handleGoogleCallback(userId, secret){
+  async handleGoogleCallback(userId, secret) {
     try {
-    // Create a session using the OAuth2 token
-    await this.account.createSession({
-      userId,
-      secret
-    })
-
-    // Get the user data
-    const user = await this.account.get()
-
-    // User is now authenticated!
-    return user
-  } catch (error) {
-    console.error('Authentication failed:', error)
-    throw error
+      // Create a session using the OAuth2 token
+      await this.account.createSession({
+        userId,
+        secret,
+      });
+      // Get the user data
+      return await this.account.get();
+    } catch (error) {
+      console.error("Authentication failed:", error);
+      return false;
+    }
+    return null
   }
-  }
-
-
 }
+
+
 
 const authService = new AuthService();
 
