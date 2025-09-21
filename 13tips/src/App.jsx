@@ -2,7 +2,12 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [isLoggedIn, setIsLoggesIn] = useState(null)
+  const [isLoggedIn, setIsLoggesIn] = useState(NaN)
+  // const [isLoggedIn, setIsLoggesIn] = useState(0)
+  // const [isLoggedIn, setIsLoggesIn] = useState(false)
+  // const [isLoggedIn, setIsLoggesIn] = useState([])
+  // const [isLoggedIn, setIsLoggesIn] = useState(null)
+  // const [isLoggedIn, setIsLoggesIn] = useState(undefined)
 
   return (
     <div style={{padding: "2px"}}>
@@ -23,3 +28,4 @@ function App() {
 }
 
 export default App
+
