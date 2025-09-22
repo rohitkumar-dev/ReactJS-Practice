@@ -5,11 +5,11 @@ import { addTodo } from "../features/todo/todoSlice.js";
 function AddTodo(){
 
     const [input, setInput] = useState("")
-    const dispath = useDispatch()
+    const dispatch = useDispatch()
 
     const addTodoHandler = (e)=>{
         e.preventDefault()
-        dispath(addTodo(input))
+        dispatch(addTodo(input))
         setInput("")
     }
 
