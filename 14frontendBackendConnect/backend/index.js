@@ -1,19 +1,22 @@
 import express from "express";
 import http from "http";
 import dotenv from "dotenv";
+import cors from 'cors'
 
 dotenv.config();
 
 const app = express();
 const server = http.createServer(app);
-
 const PORT = process.env.PORT || 8000;
+
+
+app.use(cors())
 
 app.get("/", (req, res) => {
   res.send("Server is working");
 });
 
-app.get("/jokes", (req, res) => {
+app.get("/api/jokes", (req, res) => {
   const jokes = [
     {
       id: 1,
